@@ -196,11 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c940b3e222c4a4ab0b44f4764a811d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
   playerTransform: {fileID: 0}
   fireRate: 1
   bulletPrefab: {fileID: 4958895268230460898, guid: 477898234060d5547a29be4bf698eed4, type: 3}
   enemyGunEnd: {fileID: 7171158415634082428}
+  expolisionEffectPrefab: {fileID: 153312525867206156, guid: 0fa46c0e2198b6743bfa12893bc8eebd, type: 3}
 --- !u!50 &3174401362672960995
 Rigidbody2D:
   serializedVersion: 4

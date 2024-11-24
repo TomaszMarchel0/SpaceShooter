@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 2
   playerTransform: {fileID: 0}
   rb: {fileID: 0}
+  bulletExplosionEffect: {fileID: 7893799494023044590, guid: a1de0bf19cf7b604e89c48306a200d71, type: 3}
 --- !u!50 &-1229295337562633632
 Rigidbody2D:
   serializedVersion: 4
