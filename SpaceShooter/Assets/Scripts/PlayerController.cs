@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public Transform minXValue;
     public Transform maxXValue;
 
+    public GameObject bulletPrefab;
+    public Transform gunEndPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
 
     void PlayerMovement()
@@ -36,5 +44,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector2(minXValue.position.x, transform.position.y);
         }
+    }
+
+    void Shoot()
+    {
+        Instantiate(bulletPrefab, gunEndPosition.position, Quaternion.identity);
     }
 }
