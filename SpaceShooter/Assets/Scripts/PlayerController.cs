@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 2f;
 
+    public Transform minXValue;
+    public Transform maxXValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,15 @@ public class PlayerController : MonoBehaviour
         float horizontalInputValue = Input.GetAxis("Horizontal");
         Vector2 movementVector = new Vector2 (horizontalInputValue, 0) * moveSpeed * Time.deltaTime;
         transform.Translate (movementVector);
-    }
 
+        if (transform.position.x > maxXValue.position.x)
+        {
+            transform.position = new Vector2(maxXValue.position.x, transform.position.y);
+        }
+
+        if (transform.position.x < minXValue.position.x)
+        {
+            transform.position = new Vector2(minXValue.position.x, transform.position.y);
+        }
+    }
 }
