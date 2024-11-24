@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp = 3;
+
     public float moveSpeed = 2f;
 
     public Transform minXValue;
@@ -12,10 +14,14 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform gunEndPosition;
 
+    public float fireRate = 0.2f;
+    private float timeSinceLastAction = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.playerController = this;
     }
 
     // Update is called once per frame
@@ -27,6 +33,9 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
+        if (hp <= 0)
+            Debug.Log("Player nie zyje");
     }
 
     void PlayerMovement()
@@ -48,6 +57,19 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, gunEndPosition.position, Quaternion.identity);
+        timeSinceLastAction += Time.deltaTime;
+
+        if (timeSinceLastAction >= fireRate)
+        {
+
+            Instantiate(bulletPrefab, gunEndPosition.position, Quaternion.identity);
+            timeSinceLastAction = 0;
+        }
+    }
+
+    public void HittedByBullet()
+    {
+        hp = hp - 1;
+        Debug.Log("Trafiono");
     }
 }
